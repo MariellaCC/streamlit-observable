@@ -83,7 +83,7 @@ class Observable extends StreamlitComponentBase<{}> {
   redefineCells(main: any, redefine = {}) {
     for (let cell in redefine) {
       //@ts-ignore
-      main.redefine(cell, redefine[cell]);
+      main?.redefine(cell, redefine[cell]);
     }
   }
   componentDidMount() {
