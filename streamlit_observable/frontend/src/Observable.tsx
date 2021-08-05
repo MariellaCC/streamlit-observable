@@ -32,6 +32,7 @@ class Observable extends StreamlitComponentBase<{}> {
     const observeSet = new Set(observe);
     const hideSet = new Set(hide);
     this.runtime = new Runtime();
+    // eslint-disable-next-line
     const { default: define } = await eval(`import("https://api.observablehq.com/${notebook}.js?v=3")`);
     this.main = this.runtime.module(define, (name: string) => {
       if (observeSet.has(name) && !targetSet.has(name)) {
@@ -97,7 +98,8 @@ class Observable extends StreamlitComponentBase<{}> {
 
   public render = (): ReactNode => {
     return (
-      <div style={{ padding: '9px 12px' }}>
+      <div >
+        <div style={{ padding: '9px 12px' }}>
           <div ref={this.notebookRef}></div>
         </div>
         <div style={{ marginTop: '4px' }}>
@@ -107,6 +109,7 @@ class Observable extends StreamlitComponentBase<{}> {
             fontSize: '.8em',
             padding: ".25rem .5rem"
           }}>
+      
             <div style={{textAlign:"right"}}>
             <a href={`https://observablehq.com/${this.props.args.notebook}`} style={{ color: '#666', }}>{this.props.args.notebook}</a>
             </div>

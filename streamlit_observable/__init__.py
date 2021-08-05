@@ -1,7 +1,7 @@
 import os
 import streamlit.components.v1 as components
 
-_RELEASE = True
+_RELEASE = False
 
 if not _RELEASE:
     _component_func = components.declare_component(
@@ -64,12 +64,14 @@ def observable(key, notebook, targets=None, redefine={}, observe=[], hide=[]):
 
 
 if not _RELEASE:
-    observers = observable("World Tour!", 
-        notebook="@d3/world-tour", 
-        targets=["canvas"], 
-        observe=["name"]
+    timeSelected = 'day'
+    observable(
+        key='hello',
+        notebook="d/50b89c7d50524163",
+        targets=["viewof chart", "style"],
+        redefine={"timeSelected": timeSelected,}
     )
     
-    name = observers.get("name")
+    #name = observers.get("name")
     
-    st.write(f"Current country: ** *{name}* **")
+    #st.write(f"Current country: ** *{name}* **")
